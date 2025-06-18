@@ -24,7 +24,7 @@ namespace MasterProjectWebAPI.Controllers
             [HttpPost("login")]
             public IActionResult Login([FromBody] LoginDTO login)
             {
-                // Example hardcoded credentials - replace with DB validation if needed
+              
                 if (login.Username == "admin" && login.Password == "password")
                 {
                     var tokenHandler = new JwtSecurityTokenHandler();
