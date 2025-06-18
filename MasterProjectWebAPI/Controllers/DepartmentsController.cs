@@ -5,6 +5,7 @@ using MasterProjectCommonUtility.Paging;
 using MasterProjectCommonUtility.Response;
 using MasterProjectDTOModel.Departments;
 using MasterProjectDTOModel.Jobs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MasterProjectWebAPI.Controllers
@@ -24,6 +25,8 @@ namespace MasterProjectWebAPI.Controllers
                _pagingParameter = pagingParameter;
         }
 
+
+        [Authorize]
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> Departments([FromBody] DepartmentsRequest_DTO request_DTO)
@@ -43,7 +46,7 @@ namespace MasterProjectWebAPI.Controllers
             { return Ok(resultWithDataDTO); }
             else { return BadRequest(resultWithDataDTO); }
         }
-
+        [Authorize]
         [HttpPut]
         [Route("[action]/{Id}")]
         public async Task<IActionResult> Departments(int Id, [FromBody] UpdateDepartementsRequest_DTO request_DTO)
@@ -64,7 +67,7 @@ namespace MasterProjectWebAPI.Controllers
             else { return BadRequest(resultWithDataDTO); }
         }
 
-
+        [Authorize]
 
         [HttpGet]
 

@@ -6,6 +6,7 @@ using MasterProjectCommonUtility.Paging;
 using MasterProjectCommonUtility.Response;
 using MasterProjectDTOModel.Departments;
 using MasterProjectDTOModel.Locations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MasterProjectWebAPI.Controllers
@@ -22,6 +23,7 @@ namespace MasterProjectWebAPI.Controllers
                _pagingParameter = pagingParameter;
         }
 
+        [Authorize]
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> Locations([FromBody] LocationsRequest_DTO request_DTO)
@@ -41,6 +43,9 @@ namespace MasterProjectWebAPI.Controllers
             { return Ok(resultWithDataDTO); }
             else { return BadRequest(resultWithDataDTO); }
         }
+
+
+        [Authorize]
 
         [HttpPut]
         [Route("[action]/{Id}")]
@@ -62,7 +67,7 @@ namespace MasterProjectWebAPI.Controllers
             else { return BadRequest(resultWithDataDTO); }
         }
 
-
+        [Authorize]
 
         [HttpGet]
 
